@@ -1,0 +1,177 @@
+Write a program to find sum of all characters and their adjacent character combination from given string.
+Consider the below string:
+S1=”321”
+All combination of characters and adjacent character from above string is 3,2,1,32,21,321
+Addition of all number (3+2+1+32+21+321) we can get 380 as result.
+
+Input Format: 
+Candidate has to write the code to accept single string value for S1 without any additional message.
+Only integer characters are allowed.
+
+Output Format:
+Written program code should generate output as single integer value which represents Sum.
+Additional message in output will cause to failure of test cases.
+
+
+
+
+
+
+
+
+
+
+		6974
+
+		6 9 7 4
+		69 97 74
+		697	974
+		6974
+
+		12345
+		1	2	3	4	5	10		
+		12	23	34	45		100
+		123	234	345			1000
+		1234	2345				10000
+		12345
+
+
+
+
+
+
+
+
+
+
+
+		12345 % 10		5
+		12345 / 10
+		1234  % 10		4
+		1234  / 10
+		123   % 10		3
+		123   / 10
+		12    % 10		2
+		12    / 10
+		1     % 10		1
+		1     / 10
+		0
+
+		12345 % 100		45
+		12345 / 10		
+		1234  % 100		34
+		1234  / 10
+		123   % 100		23
+		123   / 10
+		12    % 100		12
+		12    / 10
+		1
+
+
+
+		12345 % 1000		345
+		12345 / 10
+		1234  % 1000		234
+		1234  / 10
+		123   % 1000		123
+		123   / 10
+		12
+
+		12345 % 10000		2345
+		12345 / 10
+		1234  % 10000		1234
+		1234  / 10
+		123
+
+		COPY
+		POWER
+                        123  >= (1000)
+		while ( copy >= (power / 10))
+                {
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	6974
+	6 9 7 4
+	69 97 74
+	697 974
+	6974
+
+
+
+
+
+
+
+
+
+
+
+
+
+Constraints:
+String contains only number without any space.
+Length of string is less than 5.
+
+Examples:
+Examples -1:
+Input:
+321	(Value of String S1)
+Output:
+380
+
+Examples -2:
+Input:
+12	
+Output:
+15	
+
+Explanation:
+In Examples -2: All possible combinations are 1,2,12
+Sum = 1+2+12=15

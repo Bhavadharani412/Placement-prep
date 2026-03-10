@@ -1,0 +1,198 @@
+A game development company wants to design a brain game application for kids. There are different types of tasks to be designed for the game. Among all the tasks, there is one task in which each digit of an existing number has to be replaced with another digit. Consider the following table
+Existing Numbers: 0 1 2 3 4 5 6 7 8 9
+Replace by      : 9 8 7 6 5 4 3 2 1 0
+Digit 0 has to be replaced with 9, 1 has to be replaced with 8, 2 has to be replaced with 7 and the rest of the numbers have to be replaced accordingly
+Constraints
+0<=N<=1000000
+The system should generate a message as "Wrong Input" if the value of N is out of range
+Example 1
+Input
+105201		6974		12345		1000
+Output
+894798		3025		87654		8999
+Example 2
+Input
+10000001
+Output
+Wrong Input
+I 6974		12345		1000		67
+O 3025		87654		8999		32
+  9999          99999           9999		99
+
+Find the next larger tens power
+subtract 1 from it
+subtract the input
+
+
+Given 'n' 
+
+		9     1001        0110           6	1111	10000
+		65    1000001   0111110		62	1111111 1000000
+
+		33    100001	011110		30	111111  100000
+		
+
+
+
+
+
+
+
+
+
+
+Any number in it`s base is written 10
+
+
+		base		write
+		10		  10
+		2		  10
+		8	          10
+		6		  10
+		16		  10
+	Any power in any base is 1 followed by 0's 
+
+
+
+
+
+
+	binary
+	1		1
+	1*10
+	10		2
+	10*10
+	100		4
+	100*10
+	1000		8
+	1000*10
+	10000		16
+
+
+	Octal
+	1		1
+	1*10
+	10		8
+	10*10
+	100		64
+	100*10
+	1000		512
+	1000*10
+	10000		4096
+
+
+
+
+
+
+
+
+
+
+	Hexa-decimal
+	1		1
+	1*10
+	10		16
+	10*10
+	100		256
+	100*10
+	1000		4096
+	1000*10
+	10000		65536
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	9		1001
+			0110
+        6
+        15
+	65		1000001
+			0111110
+	62
+	127
+	
+
+
+
+
+
+
+
+
+
+
+
+		1356		10000
+				10
+				100
+				1000
+				10000
+				100000
+
+
+
+
+
+
+
+
+
+
+Ram you have 7 sweets if you give 2 to your friend how much will you have?
+
+	Total		One part it 		OTHER PART	
+	  X		    Y			   X - Y
+
+
+Magic Box
+
+			   1			   2
+	3 - input
+
+	9999	         6974 			3025
+
+	9999 IS THE LARGEST 4 DIGIT NUMBER
+	10000 IS THE SMALLEST 5 DIGIT NUMBER
+	10000 - 1 WILL GIVE 9999
+	6974		10000
+
+
+      11111		10110			01001
+	11111 IS THE LARGEST 5 BITS
+	100000 IS THE SMALLEST 6 BITS
+	100000 -1 11111
+	??? 100000
+	35		100011
+			011100
+	35		1 2 4 8 16 32 64
+			1000000
+			0111111
+			111111
+			100011
+			011100		
+			
+

@@ -1,0 +1,13 @@
+Write a function that receives an array as a parameter and should return the index of the smallest element
+
+Write a function that receives an array as a parameter and reverses the array
+
+Leetcode 438
+
+Write a program to accept an integer and print its ROMAN form
+
+Rotate an array 
+
+Bubble Sort
+
+Selection Sort

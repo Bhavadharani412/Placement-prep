@@ -1,0 +1,76 @@
+Backtracking – an algorithm to build solutions incrementally, remembering the states. As we continue to build, we might meet a dead-end, if so, we will revert to an earlier state and take up another path to the solution.
+
+A backtracking algorithm tries to construct a solution to a computational problem incrementally, one small piece at a time. Whenever the algorithm needs to decide between multiple alternatives to the next component of the solution, it  recursively evaluates every alternative and then chooses the best one
+
+Backtracking is a general algorithm for finding all (or some) solutions to some computational problems, notably constraint satisfaction problems, that incrementally builds candidates to the solutions, and abandons a candidate (“backtracks”) as soon as it determines that the candidate cannot possibly be completed to a valid solution.
+-Wikipedia
+
+Skeleton:
+
+1) Check if the current state is the final state if yes, then do the bookkeeping and return.
+2) If not, enumerate all the possible choices/options you have to go from here.
+3) Loop through all the choices one by one
+	If the choice is safe, CHOOSE the choice. (Feasibility / Bounding)
+	DO CERTAIN THINGS
+	Try to solve the problem further – Go ahead
+	UNDO THE CERTAIN THINGS
+
+
+
+
+		LsLsLs
+		sssLLL
+		LLLsss
+
+		L1S1L2S2L3S3
+		L1S1    L3S3L2S2
+
+
+
+
+
+	if ( sizeof(int) > -1 )
+          printf("Hello");
+        else
+          printf("Hi");
+
+
+
+	00000100   11111111
+	11111111
+
+		6974
+		7801
+
+		9999999999
+		
+		810
+		5
+		25
+		29
+		85
+		89
+		135
+		35
+		34
+		25
+
+		400
+		0					400
+					200
+			 100
+		    2500
+               625
+	144
+
+				6724
+
+
+		00		99
+		
+
+
+
+
+
+

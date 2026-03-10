@@ -1,0 +1,224 @@
+		 Data Structures
+			/\
+		       /  \
+		      /    \
+                     /      \
+                    /        \
+                   /          \
+               Physical     Logical
+
+
+
+Logical data structures define how data is organized, accessed, and behaves (e.g., stacks, queues, trees) conceptually, acting as an abstract interface. Physical data structures represent the actual, low-level storage in memory, such as arrays or linked lists. Logical structures provide usability, while physical structures focus on performance and efficiency. 
+
+Key Differences Between Physical and Logical Data Structures
+Definition & Focus:
+Logical: Focuses on the user’s view and how data elements relate to each other (e.g., hierarchy in a tree).
+Physical: Focuses on how data is actually stored on hardware (memory organization).
+Implementation:
+Logical: Abstract data types (ADTs) that define the "what" (e.g., LIFO for stacks, FIFO for queues).
+Physical: Concrete implementations that define the "how" (e.g., using arrays or pointers).
+Examples:
+Logical: Lists, Stacks, Queues, Graphs, Trees.
+Physical: Arrays, Linked Lists.
+Purpose:
+Logical: Provides an interface for data manipulation.
+Physical: Manages storage space, efficiency, and access speed
+
+What is an Array ?
+
+Define an array in Java
+int [] arr = { 6,9,1,2,4,7}
+num integer;
+int num;
+
+datatype [] name = {};
+// datatype name [] = {};
+datatype * name = malloc / calloc
+datatype [] name = new datatype[size];
+int [] arr = { 6,9,1,2,4,7};
+
+int [] arr = new int[6];
+
+General Instructions to Candidates
+Go through the problem statement carefully.
+There is atleast one visible test case for each scenario / edge case in the problem statement.
+Do not expect the problem statement to be solved by a single well-known algorithm 
+(Knapsack, Depth/Breadth-first search, etc.)
+Do come up with your own logic for solving the problem. It may use well-known algorithms as part of the solution.
+You may use the Internet to look up well-known algorithms or useful code snippets.
+We check for plagiarized code (including renaming variables / functions and logic tweaks)
+DO NOT copy or use the Internet to search for existing solutions.
+DO NOT let someone else copy your code. We disqualify all plagiarized copies
+Do use proper naming (clear and understandable names for variables, functions, etc.)
+Do follow clean coding practices as much as possible
+If after all this, you find parts of the code not understandable at a casual glance, do make use of comments to 
+explain what the code does
+
+Initialize an array
+
+Traverse an array
+
+
+
+
+11:41
+Given an array {6,9,1,2,4,7}, find the sum of the array
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Given an array {6,9,1,2,4,7}, replace every element with sum of every other element
+
+
+
+
+ 0 1 2 3 4 5
+{6,9,1,2,4,7}
+
+sum 
+0 6 15 16 18 22 29
+
+23 20 28 27 25 22
+
+
+
+
+
+
+
+
+11:50
+Given an array {6,9,1,2,4,7}, replace every element with sum of elements on the right side
+29
+0 1 2 3 4 5 6 7 8  9  10  11 12 13 14 15 16 17 18 19 20
+1 2 3 4 5 6 8 9 10 12 15  16 18
+	
+	2	3	5
+	0	0	0
+	8	6	3
+	20	24	20
+0..5 1..5	
+29,  23,14,13,11,7	
+6  9  1  2  4  7	
+23 14 13 11 7  0
+
+6  9  1  2  4  7
+        11  7  0
+
+sum 7 11 13
+
+
+
+12:23 - 12:30
+
+Given an array {6,9,1,2,4,7}, replace every element with sum of elements on the left side
+
+
+
+
+
+
+
+
+
+
+23	12	56	78	11	33	55	78	27	80	93	46	79	20	17	80	37	27	15	34
+
+
+23,12,56,78,11,33,55,78,27,80,93,46,79,20,17,80,37,27,15,34
+
+Write a function that receives an array as a parameter and should return an array that has the  suffix sum
+2:06
+2:21
+
+Write a function that receives an array as a parameter and should return an array that has the  prefix sum
+2:38
+2:58
+
+Write a function that receives an array as a parameter and should return an array that has larger element on the right side
+
+Write a function that receives an array as a parameter and should return an array that has larger element on the left side
+
+Write a function that receives an array as a parameter and should return the index of the smallest element
+
+Write a function that receives an array as a parameter and reverses the array
+
+Leetcode 438
+
+Write a program to accept an integer and print its ROMAN form
+
+Rotate an array 
+
+Bubble Sort
+
+Selection Sort
+
+Initial State
+L1s1L2s2L3s3
+
+Move s2L3 to end
+L1s1L2....s3s2L3
+
+Move L1s1 in the GAP
+....L2L1s1s3s2L3
+
+Move L2L1
+........s1s3s2L3L2L1
+
+
+
+
+
+
+
+
+
+          str                 patt
+jhjhbkjvbhkvbhcvkjlhcxvlk    sdjgfd
+                             ddfgjs
+
+
+
+
+
+
+A,B,C,D
+		A,B->2		
+		A<-  1
+		C,D->10
+		B<-2
+		A,B->2
+
+In a world of riddles, 9 numbers from 1 - 9 want to reach to the other side of the river using a boat. Since its a world of riddles, therefore, there are some rules:
+Rule-1: Maximum 3 numbers can cross at a time.
+Rule-2: The Boat cannot sail on its own
+Rule-3: The sum of numbers crossing at a time must be a square number.
+You need to plan trips such that minimum trips are needed for all numbers to cross.
+
+
+
+
+
+
