@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CodeSignal - Cryptarithmetic</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #1e1e2e; display: flex; height: 100vh; overflow: hidden; }
+
+  /* Sidebar */
+  .sidebar {
+    width: 64px; background: #2a2a3e; display: flex; flex-direction: column;
+    align-items: center; padding: 16px 0; gap: 28px; border-right: 1px solid #3a3a50;
+  }
+  .sidebar-item { display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; }
+  .sidebar-item svg { color: #888; }
+  .sidebar-item.active svg { color: #4a9eff; }
+  .sidebar-item span { font-size: 9px; color: #888; letter-spacing: 0.5px; }
+  .sidebar-item.active span { color: #4a9eff; }
+
+  /* Description Panel */
+  .desc-panel {
+    width: 520px; background: #fff; overflow-y: auto; padding: 28px 32px;
+    border-right: 1px solid #e0e0e0; font-size: 14px; line-height: 1.7; color: #1a1a2e;
+  }
+  .desc-panel h2 { font-size: 20px; font-weight: 700; margin: 24px 0 12px; color: #1a1a2e; }
+  .desc-panel p { margin-bottom: 14px; }
+  code.inline {
+    background: #f0f4ff; color: #2d5be3; padding: 2px 6px; border-radius: 4px;
+    font-family: 'Courier New', monospace; font-size: 13px; font-weight: 600;
+  }
+  .bullet-list { margin: 10px 0 10px 20px; }
+  .bullet-list li { margin-bottom: 10px; list-style: disc; }
+  .sub-list { margin: 8px 0 8px 24px; }
+  .sub-list li { list-style: circle; margin-bottom: 4px; font-family: 'Courier New', monospace; font-size: 13px; color: #2d5be3; }
+  .equation-block {
+    background: #f8f9ff; border-left: 3px solid #4a9eff; padding: 10px 16px;
+    margin: 12px 0; border-radius: 0 6px 6px 0; font-family: 'Courier New', monospace;
+    font-size: 13px; color: #2d5be3;
+  }
+  .io-section { margin-top: 24px; }
+  .io-section h2 { font-size: 18px; font-weight: 700; margin-bottom: 14px; }
+  .io-item { margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .io-item::before { content: '•'; position: absolute; left: 0; color: #2d5be3; font-weight: 700; }
+  .io-item strong { color: #1a1a2e; }
+  .constraint { font-style: italic; color: #666; margin: 6px 0 4px 16px; display: block; font-size: 13px; }
+  .constraint-val { font-family: 'Courier New', monospace; color: #2d5be3; font-size: 13px; margin-left: 16px; display: block; }
+  .time-note { color: #888; font-size: 12px; }
+
+  /* italic word in text */
+  em { font-style: italic; }
+
+  /* Editor panel placeholder */
+  .editor-panel {
+    flex: 1; background: #1e1e2e; display: flex; flex-direction: column;
+  }
+  .editor-tabs {
+    background: #252535; padding: 0 16px; display: flex; align-items: center;
+    border-bottom: 1px solid #3a3a50; height: 40px;
+  }
+  .editor-tab {
+    padding: 0 16px; height: 40px; display: flex; align-items: center;
+    font-size: 13px; color: #888; cursor: pointer; border-bottom: 2px solid transparent;
+  }
+  .editor-tab.active { color: #fff; border-bottom-color: #4a9eff; }
+  .line-nums { color: #555; font-family: 'Courier New', monospace; font-size: 13px; padding: 16px 12px; text-align: right; user-select: none; border-right: 1px solid #3a3a50; }
+  .editor-content { display: flex; flex: 1; overflow: auto; }
+  .code-area { flex: 1; padding: 16px; font-family: 'Courier New', monospace; font-size: 13px; color: #abb2bf; line-height: 1.8; }
+  .kw { color: #c678dd; }
+  .type { color: #e5c07b; }
+  .fn { color: #61afef; }
+  .str { color: #98c379; }
+  .cm { color: #5c6370; font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <div class="sidebar-item active">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+    <span>DESC</span>
+  </div>
+  <div class="sidebar-item">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 6 12 12 16 14"/></svg>
+    <span>HISTORY</span>
+  </div>
+  <div class="sidebar-item">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+    <span>RULES</span>
+  </div>
+  <div class="sidebar-item">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <span>INFO</span>
+  </div>
+  <div class="sidebar-item">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/></svg>
+    <span>SETTINGS</span>
+  </div>
+</div>
+
+<!-- Description Panel -->
+<div class="desc-panel">
+  <p>A <em>cryptarithm</em> is a mathematical puzzle where the goal is to find the correspondence between letters and digits such that the given arithmetic equation consisting of letters holds true.</p>
+
+  <p>Given a <em>cryptarithm</em> as an array of strings <code class="inline">crypt</code>, count the number of its valid solutions.</p>
+
+  <p>The solution is valid if each letter represents a different digit, and the leading digit of any multi-digit number is not zero.</p>
+
+  <p><code class="inline">crypt</code> has the following structure: <code class="inline">[word1, word2, word3]</code>, which stands for the <strong>word1 + word2 = word3</strong> <em>cryptarithm</em>.</p>
+
+  <h2>Example</h2>
+
+  <ul class="bullet-list">
+    <li>
+      For <code class="inline">crypt = ["SEND", "MORE", "MONEY"]</code>, the output should be
+      <code class="inline">solution(crypt) = 1</code>, because there is only one solution to this <em>cryptarithm</em>:
+      O = 0, M = 1, Y = 2, E = 5, N = 6, D = 7, R = 8, and S = 9 &nbsp;( 9567 + 1085 = 10652 ).
+    </li>
+    <li>
+      For <code class="inline">crypt = ["GREEN", "BLUE", "BLACK"]</code>, the output should be
+      <code class="inline">solution(crypt) = 12</code>, because there are <strong>12</strong> possible valid solutions:
+      <ul class="sub-list">
+        <li>54889 + 6138 = 61027</li>
+        <li>18559 + 2075 = 20634</li>
+        <li>72449 + 8064 = 80513</li>
+        <li>48229 + 5372 = 53601</li>
+        <li>47119 + 5261 = 52380</li>
+        <li>36887 + 4028 = 40915</li>
+        <li>83447 + 9204 = 92651</li>
+        <li>74665 + 8236 = 82901</li>
+        <li>65884 + 7308 = 73192</li>
+        <li>57883 + 6408 = 64291</li>
+        <li>57881 + 6428 = 64309</li>
+        <li>83441 + 9264 = 92705</li>
+      </ul>
+    </li>
+    <li>
+      For <code class="inline">crypt = ["ONE", "TWO", "THREE"]</code>, the output should be
+      <code class="inline">solution(crypt) = 0</code>, because there are no valid solutions.
+    </li>
+  </ul>
+
+  <div class="io-section">
+    <h2>Input/Output</h2>
+    <div class="io-item">
+      <strong>[execution time limit] 3 seconds (java)</strong>
+    </div>
+    <div class="io-item">
+      <strong>[memory limit] 1 GB</strong>
+    </div>
+    <div class="io-item">
+      <strong>[input] array.string <code class="inline">crypt</code></strong>
+      <p style="margin-top:6px; padding-left:16px;">Array of three non-empty strings containing only uppercase English letters.</p>
+      <span class="constraint">Guaranteed constraints:</span>
+      <span class="constraint-val">1 ≤ crypt[i].length ≤ 35</span>
+    </div>
+    <div class="io-item" style="margin-top:12px;">
+      <strong>[output] integer</strong>
+      <p style="margin-top:6px; padding-left:16px;">The number of valid solutions.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Editor Panel -->
+<div class="editor-panel">
+  <div class="editor-tabs">
+    <div class="editor-tab active">main.java</div>
+  </div>
+  <div class="editor-content">
+    <div class="line-nums">
+      1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>
+      13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>
+    </div>
+    <div class="code-area">
+      <span class="kw">import</span> java.math.BigInteger;<br>
+      <span class="kw">import</span> java.util.*;<br>
+      <br>
+      <span class="type">int</span> <span class="fn">solution</span>(String[] crypt) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="cm">// your code here</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> 0;<br>
+      }<br>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
